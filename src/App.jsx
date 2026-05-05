@@ -4,6 +4,7 @@ import profileImage from './assets/myimg.jpg'
 const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
@@ -117,6 +118,49 @@ const agentCapabilities = [
 ]
 
 const commandSignals = ['RAG ONLINE', 'LLM READY', 'AGENTS SYNCED', 'SECURE DEPLOYMENT']
+
+const featuredProjects = [
+  {
+    name: 'Moj Agentic AI',
+    type: 'Agentic AI Platform',
+    description:
+      'A bilingual agentic AI social media management system with FastAPI, OpenAI GPT, WebSocket chat, React frontend, and Arabic RTL support.',
+    stack: ['FastAPI', 'OpenAI', 'React', 'WebSocket'],
+    href: 'https://github.com/Mrsos07/Moj-Agentic-AI',
+  },
+  {
+    name: 'n8n Course',
+    type: 'AI Automation Learning System',
+    description:
+      'An Arabic interactive learning platform for automation and AI agents in n8n, including lessons, progress tracking, keyboard navigation, and quizzes.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'n8n'],
+    href: 'https://github.com/Mrsos07/n8n-course',
+  },
+  {
+    name: 'Nfoud News Platform',
+    type: 'Next.js News System',
+    description:
+      'A professional Arabic news platform built with Next.js, TypeScript, Tailwind, Supabase, SSR/ISR, SEO metadata, sitemap, RSS, and structured data.',
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'SEO'],
+    href: 'https://github.com/Mrsos07/nfoud',
+  },
+  {
+    name: 'TikTok Scraper',
+    type: 'Python Automation Pipeline',
+    description:
+      'A production-style Python automation system using FastAPI, Playwright, Streamlit, background jobs, and Google Drive organization for public-content workflows.',
+    stack: ['Python', 'FastAPI', 'Playwright', 'Streamlit'],
+    href: 'https://github.com/Mrsos07/tiktokscraper',
+  },
+  {
+    name: 'WhatsApp Chatbot n8n',
+    type: 'Workflow Automation Bot',
+    description:
+      'A WhatsApp chatbot automation project focused on connecting conversational flows with n8n workflows for practical business process automation.',
+    stack: ['n8n', 'WhatsApp', 'Automation', 'Chatbot'],
+    href: 'https://github.com/Mrsos07/chatbot-whatsapp-n8n',
+  },
+]
 
 function App() {
   const [activeSection, setActiveSection] = useState('about')
@@ -374,6 +418,66 @@ function App() {
                 >
                   {skill}
                 </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" className="scroll-mt-28 px-5 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="section-label">Featured GitHub Projects</p>
+                <h2 className="mt-4 max-w-4xl text-4xl font-black tracking-tight text-white md:text-6xl">
+                  Selected projects aligned with AI agents, automation, and modern web platforms.
+                </h2>
+              </div>
+              <a
+                href="https://github.com/Mrsos07"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit rounded-full border border-cyan-300/30 bg-cyan-300/10 px-6 py-3 text-sm font-black uppercase tracking-[0.18em] text-cyan-100 transition hover:-translate-y-1 hover:bg-cyan-300 hover:text-slate-950"
+              >
+                GitHub Profile
+              </a>
+            </div>
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-2">
+              {featuredProjects.map((project, index) => (
+                <a
+                  key={project.name}
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="agent-card glass-panel group rounded-[2rem] p-7 transition hover:-translate-y-2 hover:border-cyan-300/50"
+                  style={{ animationDelay: `${index * 0.08}s` }}
+                >
+                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <p className="text-sm font-black uppercase tracking-[0.22em] text-cyan-200">
+                        {project.type}
+                      </p>
+                      <h3 className="mt-3 text-2xl font-black text-white transition group-hover:text-cyan-200">
+                        {project.name}
+                      </h3>
+                    </div>
+                    <span className="rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-slate-950 transition group-hover:bg-cyan-300">
+                      View Repo
+                    </span>
+                  </div>
+                  <p className="mt-5 leading-8 text-slate-300">{project.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-bold text-slate-300"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-6 break-all text-sm font-bold text-cyan-300">{project.href}</p>
+                </a>
               ))}
             </div>
           </div>
