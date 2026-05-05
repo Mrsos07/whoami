@@ -69,6 +69,73 @@ a {
   }
 }
 
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(36px, -28px, 0) scale(1.08);
+  }
+}
+
+@keyframes grid-pan {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 72px 72px, 144px 144px;
+  }
+}
+
+@keyframes scan-flow {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+
+  18%,
+  72% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.82);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer-pass {
+  0% {
+    transform: translateX(-130%) skewX(-16deg);
+  }
+
+  100% {
+    transform: translateX(130%) skewX(-16deg);
+  }
+}
+
 .animate-fade-up {
   animation: fade-up 0.75s ease both;
 }
@@ -79,6 +146,155 @@ a {
 
 .animate-pulse-border {
   animation: pulse-border 3s ease-in-out infinite;
+}
+
+.agent-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(54px);
+  animation: aurora-drift 12s ease-in-out infinite;
+}
+
+.agent-orb:nth-child(2) {
+  animation-delay: -4s;
+}
+
+.agent-orb:nth-child(3) {
+  animation-delay: -8s;
+}
+
+.neural-grid {
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 18%, black, transparent 72%);
+  animation: grid-pan 24s linear infinite;
+}
+
+.scan-lines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035) 0,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+  opacity: 0.18;
+}
+
+.live-dot {
+  position: relative;
+  display: inline-flex;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 9999px;
+  background: #67e8f9;
+  box-shadow: 0 0 24px rgba(103, 232, 249, 0.9);
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem;
+  border-radius: inherit;
+  border: 1px solid rgba(103, 232, 249, 0.55);
+  animation: signal-pulse 1.7s ease-in-out infinite;
+}
+
+.agent-console {
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-console::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(94, 234, 212, 0.08), transparent 70%);
+  animation: shimmer-pass 5s ease-in-out infinite;
+}
+
+.console-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.console-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.12), transparent);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+}
+
+.console-line:hover::after {
+  transform: translateX(120%);
+}
+
+.orbit-ring {
+  animation: orbit-spin 30s linear infinite;
+}
+
+.orbit-ring::before,
+.orbit-ring::after {
+  content: "";
+  position: absolute;
+  height: 0.85rem;
+  width: 0.85rem;
+  border-radius: 9999px;
+  background: #67e8f9;
+  box-shadow: 0 0 26px rgba(103, 232, 249, 0.85);
+}
+
+.orbit-ring::before {
+  left: 12%;
+  top: 10%;
+}
+
+.orbit-ring::after {
+  bottom: 12%;
+  right: 16%;
+}
+
+.image-scan {
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.image-scan::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(103, 232, 249, 0.24), transparent);
+  animation: scan-flow 4.8s ease-in-out infinite;
+}
+
+.agent-card {
+  position: relative;
+  overflow: hidden;
+  animation: fade-up 0.75s ease both;
+}
+
+.agent-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(103, 232, 249, 0.16), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 38%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.agent-card:hover::before {
+  opacity: 1;
+}
+
+.agent-card > * {
+  position: relative;
 }
 
 .glass-panel {
@@ -94,4 +310,15 @@ a {
   font-weight: 800;
   letter-spacing: 0.24em;
   text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

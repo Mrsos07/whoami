@@ -93,6 +93,31 @@ const education = [
   { title: 'Diploma in Technical Support', year: '2010' },
 ]
 
+const agentCapabilities = [
+  {
+    title: 'Autonomous AI Workflows',
+    metric: '24/7',
+    text: 'Designing intelligent agents that execute, monitor, and improve enterprise processes.',
+  },
+  {
+    title: 'Secure RAG Intelligence',
+    metric: 'RAG',
+    text: 'Building trusted knowledge systems with retrieval, governance, and enterprise controls.',
+  },
+  {
+    title: 'LLM Customization',
+    metric: 'LoRA',
+    text: 'Adapting models with parameter-efficient fine-tuning for domain-specific outcomes.',
+  },
+  {
+    title: 'Multi-Agent Operations',
+    metric: 'MCP',
+    text: 'Connecting tools, APIs, and agents into coordinated digital operating systems.',
+  },
+]
+
+const commandSignals = ['RAG ONLINE', 'LLM READY', 'AGENTS SYNCED', 'SECURE DEPLOYMENT']
+
 function App() {
   const [activeSection, setActiveSection] = useState('about')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -104,7 +129,15 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen overflow-hidden text-slate-100">
+    <div className="relative min-h-screen overflow-hidden text-slate-100">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="agent-orb left-[-12rem] top-24 h-96 w-96 bg-cyan-400/20" />
+        <div className="agent-orb right-[-10rem] top-48 h-[30rem] w-[30rem] bg-blue-500/20" />
+        <div className="agent-orb bottom-[-12rem] left-1/3 h-[28rem] w-[28rem] bg-teal-300/14" />
+        <div className="neural-grid absolute inset-0" />
+        <div className="scan-lines absolute inset-0" />
+      </div>
+
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-2xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
           <button
@@ -123,7 +156,7 @@ function App() {
                 Saud
               </span>
               <span className="block text-xs font-semibold text-cyan-300 transition group-hover:text-cyan-200">
-                AI Engineer
+                Global AI Agent
               </span>
             </span>
           </button>
@@ -180,19 +213,43 @@ function App() {
         )}
       </header>
 
-      <main>
+      <main className="relative z-10">
         <section id="about" className="scroll-mt-28 px-5 pb-16 pt-32 lg:px-8 lg:pb-24 lg:pt-40">
           <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="animate-fade-up">
-              <p className="section-label mb-5">Automation AI Architect</p>
+              <p className="section-label mb-5">Global AI Agent Architect</p>
               <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-tight text-white md:text-7xl xl:text-8xl">
                 Saud Alghamdi
               </h1>
+              <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-cyan-100">
+                <span className="live-dot" />
+                Enterprise AI Agent Command Center
+              </div>
               <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
                 Automation AI Engineer with over 10 years of experience in automation architecture,
                 AI-powered systems, and digital transformation within enterprise and government
                 environments.
               </p>
+
+              <div className="agent-console mt-8 rounded-[2rem] border border-cyan-300/20 bg-slate-950/60 p-5 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl">
+                <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+                  <div className="flex gap-2">
+                    <span className="h-3 w-3 rounded-full bg-red-400" />
+                    <span className="h-3 w-3 rounded-full bg-amber-300" />
+                    <span className="h-3 w-3 rounded-full bg-emerald-300" />
+                  </div>
+                  <span className="text-xs font-black uppercase tracking-[0.22em] text-cyan-200">
+                    agent.runtime
+                  </span>
+                </div>
+                <div className="grid gap-3 text-sm font-bold text-slate-300 sm:grid-cols-2">
+                  {commandSignals.map((signal) => (
+                    <div key={signal} className="console-line rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                      <span className="text-cyan-300">$</span> {signal}
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <a
@@ -225,12 +282,14 @@ function App() {
 
             <div className="relative mx-auto w-full max-w-md animate-fade-up lg:max-w-lg">
               <div className="absolute -inset-8 rounded-[3rem] bg-cyan-400/10 blur-3xl" />
+              <div className="orbit-ring absolute left-1/2 top-1/2 hidden h-[38rem] w-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/10 lg:block" />
               <div className="glass-panel animate-pulse-border relative rounded-[2.5rem] p-4">
                 <img
                   src={profileImage}
                   alt="Portrait of Saud Alghamdi"
                   className="h-[34rem] w-full rounded-[2rem] object-cover object-top shadow-2xl"
                 />
+                <div className="image-scan absolute inset-4 rounded-[2rem]" />
                 <div className="absolute -bottom-6 left-6 right-6 rounded-3xl border border-white/10 bg-slate-950/80 p-5 backdrop-blur-xl">
                   <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-200">
                     Specialized In
@@ -241,6 +300,10 @@ function App() {
               <div className="animate-float-soft absolute -right-5 top-10 hidden rounded-3xl border border-cyan-300/30 bg-cyan-300 px-5 py-4 text-slate-950 shadow-2xl lg:block">
                 <p className="text-xs font-black uppercase tracking-[0.2em]">NVIDIA AI</p>
                 <p className="text-2xl font-black">2025</p>
+              </div>
+              <div className="animate-float-soft absolute -left-7 bottom-24 hidden rounded-3xl border border-white/10 bg-slate-950/80 px-5 py-4 text-white shadow-2xl backdrop-blur-xl lg:block">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Agent Status</p>
+                <p className="mt-1 text-2xl font-black">Operational</p>
               </div>
             </div>
           </div>
@@ -258,6 +321,42 @@ function App() {
                 <p className="mt-4 leading-7 text-slate-400">{text}</p>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="px-5 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+              <div>
+                <p className="section-label">Global Agent Layer</p>
+                <h2 className="mt-4 text-4xl font-black tracking-tight text-white md:text-6xl">
+                  A professional AI agent operating layer for modern enterprises.
+                </h2>
+              </div>
+              <p className="max-w-2xl leading-8 text-slate-300 lg:ml-auto">
+                The portfolio now presents Saud as a global AI agent architect: combining secure
+                data access, LLM orchestration, workflow automation, and multi-agent execution into
+                reliable enterprise systems.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {agentCapabilities.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="agent-card glass-panel rounded-[2rem] p-6 transition hover:-translate-y-2 hover:border-cyan-300/50"
+                  style={{ animationDelay: `${index * 0.12}s` }}
+                >
+                  <div className="mb-8 flex items-center justify-between">
+                    <span className="rounded-full bg-cyan-300 px-4 py-2 text-sm font-black text-slate-950">
+                      {item.metric}
+                    </span>
+                    <span className="h-3 w-3 rounded-full bg-emerald-300 shadow-[0_0_20px_rgba(110,231,183,0.75)]" />
+                  </div>
+                  <h3 className="text-xl font-black text-white">{item.title}</h3>
+                  <p className="mt-4 leading-7 text-slate-400">{item.text}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
