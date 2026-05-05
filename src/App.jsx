@@ -121,12 +121,20 @@ const commandSignals = ['RAG ONLINE', 'LLM READY', 'AGENTS SYNCED', 'SECURE DEPL
 
 const featuredProjects = [
   {
-    name: 'Moj Agentic AI',
-    type: 'Agentic AI Platform',
+    name: 'Newra - Inify Estate AI',
+    type: 'Real Estate AI Agent',
     description:
-      'A bilingual agentic AI social media management system with FastAPI, OpenAI GPT, WebSocket chat, React frontend, and Arabic RTL support.',
-    stack: ['FastAPI', 'OpenAI', 'React', 'WebSocket'],
-    href: 'https://github.com/Mrsos07/Moj-Agentic-AI',
+      'An intelligent real estate AI agent platform with Arabic/English conversation, advanced property search, lead management, appointment scheduling, n8n webhooks integration, and embeddable chat widget.',
+    stack: ['Django', 'PostgreSQL', 'OpenAI', 'n8n', 'Webhooks'],
+    href: 'https://github.com/Newra-Estate/newra',
+  },
+  {
+    name: 'Dhiban - Smart Marketing Agent',
+    type: 'AI Marketing Automation',
+    description:
+      'A bilingual (Arabic/English) smart marketing agent for digital marketing automation, developed with Django and Bootstrap 5, designed to assist marketing professionals in selling and renting properties.',
+    stack: ['Django', 'Bootstrap 5', 'Python', 'AI'],
+    href: 'https://github.com/Mrsos07/dhiban',
   },
   {
     name: 'n8n Course',
@@ -135,14 +143,6 @@ const featuredProjects = [
       'An Arabic interactive learning platform for automation and AI agents in n8n, including lessons, progress tracking, keyboard navigation, and quizzes.',
     stack: ['HTML', 'CSS', 'JavaScript', 'n8n'],
     href: 'https://github.com/Mrsos07/n8n-course',
-  },
-  {
-    name: 'Nfoud News Platform',
-    type: 'Next.js News System',
-    description:
-      'A professional Arabic news platform built with Next.js, TypeScript, Tailwind, Supabase, SSR/ISR, SEO metadata, sitemap, RSS, and structured data.',
-    stack: ['Next.js', 'TypeScript', 'Supabase', 'SEO'],
-    href: 'https://github.com/Mrsos07/nfoud',
   },
   {
     name: 'TikTok Scraper',
